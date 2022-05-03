@@ -1,3 +1,43 @@
-.card {
-  display: flex;
+.container{
+  gap: 2rem;
+  padding: 2rem;
+
+  .card {
+    gap: 1rem;
+    height: 9rem;
+
+    .image{
+      width: 100%;
+      object-fit: cover;
+
+      &-wrapper {
+        height: 100%;
+        margin: 0;
+        flex: 2;
+      }
+    }
+
+    &-body {
+      flex: 4;
+      justify-content: space-between;
+      padding: 2rem;
+      border: 1px solid;
+
+      h4 {
+        align-self: flex-end;
+        margin: 0;
+      }
+    }
+  }
+
+  .link {
+    width: 100%;
+    display: block;
+  }
+
+  .section {
+    border: 1px solid;
+    margin-block: 1rem;
+    padding: 2rem;
+  }
 }
