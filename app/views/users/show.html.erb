@@ -1,1 +1,26 @@
-<h1>users show</h1>
+<div class="container">
+  <div class="card flex">
+    <figure class="image-wrapper flex flex-center">
+      <img class="image" src="<%= @user.photo %>" alt="<%= @user.name %>">
+    </figure>
+
+    <div class="card-body flex flex-item-center">
+      <h2><%= @user.name %></h2>
+      <h4>Number of posts: <%= @user.post_counter || '0' %></h4>
+    </div>
+  </div>
+
+  <div class="section" >
+    <h2>Bio</h2>
+    <p><%= @user.bio %></p>
+  </div>
+
+  <% @user.most_recent_posts.each_with_index do |post, index| %>
+    <div class="section" >
+      <h3>#<%= index + 1 %>: <%= post.title %></h3>
+      <p><%= post.text %></p>
+    </div>
+  <% end %>
+
+  <button type="button">See all posts</button>
+</div>
