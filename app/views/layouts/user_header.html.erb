@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card flex">
+        <figure class="image-wrapper flex flex-center">
+          <img class="image" src="<%= @user.photo %>" alt="<%= @user.name %>">
+        </figure>
+
+        <div class="card-body flex flex-item-center">
+          <h2><%= @user.name %></h2>
+          <h4>Number of posts: <%= @user.post_counter || '0' %></h4>
+        </div>
+      </div>
+      <%= yield %>
+      <%= link_to @path, class: 'link' do %>
+        <button type="button"><%= @button_text %></button>
+      <% end %>
+    </div>
+  </body>
+</html>
+
+

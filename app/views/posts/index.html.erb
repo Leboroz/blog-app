@@ -1,1 +1,21 @@
-<h1> posts in development </h1>
+<% @user.posts.each_with_index do |post, index| %>
+  <article class="post">
+    <div class="post-header">
+      <h2>#<%= index + 1 %> <%= post.title %></h2>
+      <p><%= post.text %></p>
+      <div>
+        <span>Comments: <%= post.commentsCounter || 0 %> likes: <%= post.likesCounter || 0 %></span>
+
+      </div>
+    </div>
+
+    <div class="comments">
+      <% post.comments.each_with_index do |comment, index| %>
+        <div class="comment">
+          <h6 class="comment_header"><%= comment.user.name %>:</h6>
+          <p class="comment_text"><%= comment.text %></p>
+        </div>
+      <% end %>
+    </div>
+  </article>
+<% end %>
