@@ -31,6 +31,8 @@ To get a local copy up and running follow these simple example steps.
   $ git clone git@github.com:Leboroz/blog-app.git
 
   $ cd blog-app
+
+  $ rails db:setup
 ```
 ### Install
   run
@@ -39,7 +41,15 @@ To get a local copy up and running follow these simple example steps.
 ```
 
 ### Usage
+run 
+```bash
+  $ rails s
+```
 ### Run tests
+run 
+```bash
+  $ rspec
+```
 ### Deployment
 
 

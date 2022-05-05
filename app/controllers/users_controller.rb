@@ -1,5 +1,14 @@
 class UsersController < ApplicationController
-  def index; end
+  def index
+    @users = User.all
+  end
 
-  def show; end
+  def show
+    id = params[:id]
+    @user = User.find(id)
+    @button_text = 'See all posts'
+    @path = helpers.user_posts_path(params[:id])
+
+    render layout: 'user_header'
+  end
 end

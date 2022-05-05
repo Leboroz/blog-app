@@ -1,1 +1,16 @@
-<h1> users in development</h1>
+<div class="container flex flex-column">
+  <% @users.each do |user| %>
+    <div class="card flex">
+      <figure class="image-wrapper flex flex-center">
+        <img class="image" src="<%= user.photo %>" alt="<%= user.name %>">
+      </figure>
+
+      <div class="card-body flex flex-item-center">
+        <%= link_to user_path(user.id) do %>
+          <h2><%= user.name %></h2>
+        <% end %>
+        <h4>Number of posts: <%= user.post_counter || '0' %></h4>
+      </div>
+    </div>  
+  <%end%>
+</div>
