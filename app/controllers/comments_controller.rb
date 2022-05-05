@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   def new
     comment = Comment.new
     respond_to do |format|
-      format.html { render :new, locals: { comment: comment } }
+      format.html { render :new, locals: { comment: } }
     end
   end
 
@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     user = User.find(params[:user_id])
     post = user.posts.find(params[:post_id])
     values = params.require(:comment).permit(:text)
-    @new_comment = Comment.new(author: user, post: post, text: values[:text])
+    @new_comment = Comment.new(author: user, post:, text: values[:text])
     respond_to do |format|
       format.html do
         if @new_comment.save
