@@ -1,20 +1,13 @@
-require 'yaml'
 class PostsController < ApplicationController
   def index
-    @user = User.find(id)
+    @user = User.find(params[:user_id])
     @button_text = 'Pagination'
-    @path = helpers.user_post_path(id:)
+    @path = helpers.user_posts_path(params[:user_id])
 
     render layout: 'user_header'
   end
 
   def show
-    @post = Post.where(author: id).find(params[:id])
-  end
-
-  private
-
-  def id
-    params[:user_id]
+    @post = Post.where(author: params[:user_id]).find(params[:id])
   end
 end
