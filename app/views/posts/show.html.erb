@@ -2,7 +2,7 @@
   <article>
     <h2><%= @post.title %> by <%= @post.author.name %></h2>
     <div>
-      <span>Comments: <%= @post.commentsCounter || 0 %> likes: <%= @post.likesCounter || 0 %></span>
+      <span>Comments: <%= @post.commentsCounter || 0 %> <%= render partial: 'shared/likes' %>: <%= @post.likesCounter || 0 %></span>
       <p><%= @post.text %></p>
     </div>
   </article>
@@ -14,4 +14,5 @@
       </div>
     <% end %>
   </div>
+  <%= render partial: 'shared/comments'%>
 </section>

@@ -1,11 +1,4 @@
 class CommentsController < ApplicationController
-  def new
-    comment = Comment.new
-    respond_to do |format|
-      format.html { render :new, locals: { comment: } }
-    end
-  end
-
   def create
     user = User.find(params[:user_id])
     post = user.posts.find(params[:post_id])
