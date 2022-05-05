@@ -6,7 +6,9 @@
       </figure>
 
       <div class="card-body flex flex-item-center">
-        <h2><%= user.name %></h2>
+        <%= link_to user_path(user.id) do %>
+          <h2><%= user.name %></h2>
+        <% end %>
         <h4>Number of posts: <%= user.post_counter || '0' %></h4>
       </div>
     </div>  

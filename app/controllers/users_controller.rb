@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     id = params[:id]
     @user = User.find(id)
     @button_text = 'See all posts'
-    @path = helpers.user_posts_path(id:)
+    @path = helpers.user_posts_path(params[:id])
 
     render layout: 'user_header'
   end
