@@ -8,8 +8,7 @@ class PostsController < ApplicationController
 
   def create
     user = User.find(params[:user_id])
-    post_values = params.require(:post).permit(:title, :text)
-    @new_post = Post.new(author: user, title: post_values[:title], text: post_values[:text])
+    @new_post = Post.new(author: user, title: post_params[:title], text: post_params[:text])
     respond_to do |format|
       format.html do
         if @new_post.save
@@ -33,5 +32,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.where(author: params[:user_id]).find(params[:id])
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :text)
   end
 end
