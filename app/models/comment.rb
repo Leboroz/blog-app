@@ -4,6 +4,9 @@ class Comment < ApplicationRecord
 
   after_save :increase_comments_counter
 
+  validates :author, presence: true
+  validates :post, presence: true
+
   private
 
   def increase_comments_counter
