@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  subject { Post.new(author: User.new(name:'Ana', photo: 'photo.com', bio: 'Full-stack dev'), title: 'My first post', text: 'Full-stack software dev', commentsCounter: 0, likesCounter: 0)  }
+  subject do
+    Post.new(author: User.new(name: 'Ana', photo: 'photo.com', bio: 'Full-stack dev'), title: 'My first post',
+             text: 'Full-stack software dev', commentsCounter: 0, likesCounter: 0)
+  end
 
   before { subject.save }
 
@@ -11,7 +14,12 @@ RSpec.describe Post, type: :model do
   end
 
   it '.title should not exceed 250 characters' do
-    subject.title = 'very looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong text'
+    subject.title = 'very loooooooooooooooooooooooooooooooooo
+    ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+    ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+    ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+    oooooooooooooooooooooooooooooooooooooooooooooong text'
+
     expect(subject).to_not be_valid
   end
 
@@ -27,7 +35,7 @@ RSpec.describe Post, type: :model do
 
   describe '#most_recent_comments' do
     it 'should only return 3 comments' do
-      user = User.new(name:'Ana', photo: 'photo.com', bio: 'Full-stack dev')
+      user = User.new(name: 'Ana', photo: 'photo.com', bio: 'Full-stack dev')
       (1..6).each { |i| Comment.new(post: subject, author: user, text: "comment#{i}").save }
 
       most_recent = subject.most_recent_comments
