@@ -7,9 +7,17 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <% if flash.any? %>
+      <% flash.each do |type, msg| %>
+        <div>
+          <%= msg %>
+        </div>
+      <% end %>
+    <% end %>
     <div class="container">
       <div class="card flex">
         <figure class="image-wrapper flex flex-center">
@@ -18,7 +26,10 @@
 
         <div class="card-body flex flex-item-center">
           <h2><%= @user.name %></h2>
-          <h4>Number of posts: <%= @user.post_counter || '0' %></h4>
+          <div>
+            <%= link_to 'new post', new_user_post_path(params[:user_id]) %>
+            <h4>Number of posts: <%= @user.post_counter || '0' %></h4>
+          </div>
         </div>
       </div>
       <%= yield %>

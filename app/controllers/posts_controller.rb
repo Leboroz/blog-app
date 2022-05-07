@@ -8,7 +8,8 @@ class PostsController < ApplicationController
 
   def create
     user = User.find(params[:user_id])
-    @new_post = Post.new(author: user, title: post_params[:title], text: post_params[:text])
+    @new_post = Post.new(author: user, title: post_params[:title], text: post_params[:text], likesCounter: 0,
+                         commentsCounter: 0)
     respond_to do |format|
       format.html do
         if @new_post.save
@@ -24,6 +25,7 @@ class PostsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
+    @posts = @user.posts.includes(:comments)
     @button_text = 'Pagination'
     @path = helpers.user_posts_path(params[:user_id])
 

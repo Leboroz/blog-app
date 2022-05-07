@@ -4,6 +4,9 @@ class Like < ApplicationRecord
 
   after_save :increase_like_counter
 
+  validates :author, presence: true
+  validates :post, presence: true
+
   private
 
   def increase_like_counter
