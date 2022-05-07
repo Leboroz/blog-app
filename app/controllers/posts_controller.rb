@@ -25,6 +25,7 @@ class PostsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
+    @posts = @user.posts.includes(:comments)
     @button_text = 'Pagination'
     @path = helpers.user_posts_path(params[:user_id])
 
