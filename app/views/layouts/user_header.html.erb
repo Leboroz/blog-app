@@ -29,7 +29,7 @@
         <div class="card-body flex flex-item-center">
           <h2><%= @user.name %></h2>
           <div>
-            <%= link_to 'new post', new_user_post_path(params[:user_id]) %>
+            <%= link_to 'new post', user_post_path(params[:id]) %>
             <h4>Number of posts: <%= @user.post_counter || '0' %></h4>
           </div>
         </div>

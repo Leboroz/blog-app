@@ -33,7 +33,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.where(author: params[:user_id]).find(params[:id])
+    @post = Post.where(author: params[:user_id]).find(params[:post_id])
   end
 
   private
