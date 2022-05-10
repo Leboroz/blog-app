@@ -10,7 +10,8 @@ class Ability
       can :manage, :all
     elsif user.is? :user
       can :manage, Post, author_id: user.id
-    elsif user.is? :user
+			can :manage, Comment, author_id: user.id
+    elsif user.is? :guest
       can :read, :all
     end
     #
