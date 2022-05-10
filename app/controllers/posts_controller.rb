@@ -36,6 +36,11 @@ class PostsController < ApplicationController
     @post = Post.where(author: params[:user_id]).find(params[:id])
   end
 
+  def delete
+    Post.find(params[:post_id]).destroy
+    redirect_to user_posts_path(params[:user_id])
+  end
+
   private
 
   def post_params
