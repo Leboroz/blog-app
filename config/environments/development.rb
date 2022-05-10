@@ -7,7 +7,6 @@ Rails.application.configure do
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-
   # Do not eager load code on boot.
   config.eager_load = false
 
@@ -67,4 +66,5 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end

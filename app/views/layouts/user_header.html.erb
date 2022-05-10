@@ -18,7 +18,11 @@
         </div>
       <% end %>
     <% end %>
-    <div class="container">
+    <% if notice %><p class="notice"><%= notice %></p><% end %>
+    <% if alert %><p class="alert"><%= alert %></p><% end %>
+    <nav>
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+    </nav>  <div class="container">
       <div class="card flex">
         <figure class="image-wrapper flex flex-center">
           <img class="image" src="<%= @user.photo %>" alt="<%= @user.name %>">
@@ -27,7 +31,7 @@
         <div class="card-body flex flex-item-center">
           <h2><%= @user.name %></h2>
           <div>
-            <%= link_to 'new post', new_user_post_path(params[:user_id]) %>
+            <%= link_to 'new post', new_user_post_path(params[:id] || params[:user_id]) %>
             <h4>Number of posts: <%= @user.post_counter || '0' %></h4>
           </div>
         </div>
