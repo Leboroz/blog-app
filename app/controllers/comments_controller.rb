@@ -15,10 +15,10 @@ class CommentsController < ApplicationController
     end
   end
 
-	def delete
-		Comment.find(params[:id]).destroy
-		redirect_to user_post_path(params[:user_id], params[:id]) 
-	end
+  def delete
+    Comment.find(params[:id]).destroy
+    redirect_to user_post_path(params[:user_id], params[:id])
+  end
 
   private
 

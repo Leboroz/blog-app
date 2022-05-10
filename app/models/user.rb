@@ -9,10 +9,10 @@ class User < ApplicationRecord
 
   before_save :default_values
 
-  Roles = [ :admin , :user, :guest ]
+  ROLES = %i[admin user guest].freeze
 
-  def is?( requested_role )
-    self.role == requested_role.to_s
+  def is?(requested_role)
+    role == requested_role.to_s
   end
 
   def default_values
