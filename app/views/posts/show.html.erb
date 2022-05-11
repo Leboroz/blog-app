@@ -11,6 +11,7 @@
       <div>
         <h6><%= comment.author.name %>: </h6>
         <p><%= comment.text %></p>
+				<%= button_to 'delete', user_post_comment_path(user_id: @post.author.id, post_id: @post.id, id: comment.id), method: :delete if can? :delete, comment %>
       </div>
     <% end %>
   </div>

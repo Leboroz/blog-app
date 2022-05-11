@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   def new
     post = Post.new
     respond_to do |format|
@@ -34,6 +36,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.where(author: params[:user_id]).find(params[:id])
+  end
+
+  def delete
+    Post.find(params[:post_id]).destroy
+    redirect_to user_posts_path(params[:user_id])
   end
 
   private

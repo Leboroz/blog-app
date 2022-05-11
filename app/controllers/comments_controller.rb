@@ -1,13 +1,15 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
+
   def create
-    author = User.find(params[:user_id])
-    post = author.posts.find(params[:post_id])
-    @new_comment = Comment.new(author:, post:, text: comments_params[:text])
+    @post = Post.find(params[:post_id])
+    text = comment_params[:text]
+    @new_comment = Comment.new(post_id: @post.id, author_id: current_user.id, text:)
     respond_to do |format|
       format.html do
         if @new_comment.save
           flash[:success] = 'comment saved successfully'
-          redirect_to user_post_path(author.id, post.id)
+          redirect_to user_post_path(params[:user_id], @post.id)
         else
           flash.now[:error] = 'Error: Comment could not be saved'
         end
@@ -15,9 +17,14 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    Comment.find(params[:id]).destroy
+    redirect_to user_post_path(params[:user_id], params[:post_id])
+  end
+
   private
 
-  def comments_params
+  def comment_params
     params.require(:comment).permit(:text)
   end
 end
