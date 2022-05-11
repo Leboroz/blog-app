@@ -22,7 +22,8 @@
     <% if alert %><p class="alert"><%= alert %></p><% end %>
     <nav>
       <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
-    </nav>  <div class="container">
+    ``<p><%= current_user.name%></p>
+		</nav>  <div class="container">
       <div class="card flex">
         <figure class="image-wrapper flex flex-center">
           <img class="image" src="<%= @user.photo %>" alt="<%= @user.name %>">
