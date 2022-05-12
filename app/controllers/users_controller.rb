@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
+    respond_to do |format|
+      format.html
+      format.json { render :json => @users }
+    end
   end
 
   def show
@@ -9,6 +13,11 @@ class UsersController < ApplicationController
     @button_text = 'See all posts'
     @path = helpers.user_posts_path(params[:id])
 
-    render layout: 'user_header'
+    respond_to do |format|
+      format.html { render layout: 'user_header' }
+      format.json { render :json => @user.posts  }
+    end
+     
+
   end
 end
