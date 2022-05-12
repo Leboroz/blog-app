@@ -6,7 +6,7 @@ RSpec.describe 'Posts', type: :system do
   end
 
   before :all do
-    @user = User.includes(:posts).find(1)
+    @user = User.includes(:posts).first
   end
 
   before :each do
@@ -48,7 +48,7 @@ RSpec.describe 'Posts', type: :system do
     end
 
     it 'can see the first comments on a post' do
-      expect(page).to have_content(@comment.text)
+      expect(page).to have_content(@post.text)
     end
 
     it 'can see how many likes a post has' do

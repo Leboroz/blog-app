@@ -8,6 +8,8 @@ class Post < ApplicationRecord
   validates :author, presence: true
   validates :title, presence: true, length: { in: 3..250 }
   validates :text, presence: true, length: { in: 3..300 }
+  validates :commentsCounter, numericality: { greater_than_or_equal_to: 0 }
+  validates :likesCounter, numericality: { greater_than_or_equal_to: 0 }
 
   def default_values
     self.likesCounter = 0
