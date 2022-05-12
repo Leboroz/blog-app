@@ -24,7 +24,7 @@ RSpec.describe "Users", type: :system do
 			end
 
 			it "can see the profile picture for each user." do
-				expect(page).to have_selector("img")
+				expect(page).to have_xpath(".//img[@src=\"#{@user.photo}\"]")
 			end
 
 			it "I can see the number of posts each user has written." do
