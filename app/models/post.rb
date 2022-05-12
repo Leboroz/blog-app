@@ -8,8 +8,13 @@ class Post < ApplicationRecord
   validates :author, presence: true
   validates :title, presence: true, length: { in: 3..250 }
   validates :text, presence: true, length: { in: 3..300 }
-  validates_numericality_of :commentsCounter, greater_than_or_equal_to: 0
-  validates_numericality_of :likesCounter, greater_than_or_equal_to: 0
+  validates :commentsCounter, numericality: { greater_than_or_equal_to: 0 }
+  validates :likesCounter, numericality: { greater_than_or_equal_to: 0 }
+
+  def default_values
+    self.likesCounter = 0
+    self.commentsCounter = 0
+  end
 
   def most_recent_comments
     comments.order('created_at Desc').limit(5)
