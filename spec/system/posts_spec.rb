@@ -67,5 +67,25 @@ RSpec.describe "Posts", type: :system do
 			end
 		end
 
+		describe '#show' do
+			before :all do
+				@post = @user.posts.first		
+				@comment = @post.comments.last	
+				@like = @post.likes.length
+			end
+
+			before :each do
+				visit user_post_path(@user.id, @post.id)
+			end
+
+			it 'can see the post\'s title' do
+				expect(page).to have_content(@post.title)
+			end
+
+			it 'can see who wrote the post' do
+				expect(page).to have_content(@user.name)
+			end
+		end
+
 	end
 end
