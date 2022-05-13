@@ -15,6 +15,9 @@ gem 'pg', '~> 1.1'
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
 
+gem 'jwt', '~> 1.5', '>= 1.5.4'
+
+gem 'knock'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
 
@@ -34,7 +37,7 @@ gem 'jbuilder'
 # gem "kredis"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data'
