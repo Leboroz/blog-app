@@ -15,7 +15,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html { render layout: 'user_header' }
-      format.json { render :json => @user.posts  }
     end
      
 

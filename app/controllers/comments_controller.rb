@@ -6,14 +6,7 @@ class CommentsController < ApplicationController
     text = comment_params[:text]
     @new_comment = Comment.new(post_id: @post.id, author_id: current_user.id, text:)
     respond_to do |format|
-      format.html do
-        if @new_comment.save
-          flash[:success] = 'comment saved successfully'
-          redirect_to user_post_path(params[:user_id], @post.id)
-        else
-          flash.now[:error] = 'Error: Comment could not be saved'
-        end
-      end
+      format.json { render :json => @new_comment if @new_comment.save }
     end
   end
 
