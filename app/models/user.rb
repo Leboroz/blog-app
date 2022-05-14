@@ -24,4 +24,8 @@ class User < ApplicationRecord
   def most_recent_posts
     posts.order('created_at Desc').limit(3)
   end
+
+  def as_json(_options = {})
+    super(only: %i[id name bio posts_counter])
+  end
 end

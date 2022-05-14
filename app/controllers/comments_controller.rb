@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     text = comment_params[:text]
     @new_comment = Comment.new(post_id: @post.id, author_id: current_user.id, text:)
     respond_to do |format|
-      format.json { render :json => @new_comment if @new_comment.save }
+      format.json { render json: @new_comment if @new_comment.save }
     end
   end
 

@@ -2,10 +2,10 @@ class Api::V1::PostsController < ApplicationController
   before_action :set_post
 
   def show
-    render :json => @post.comments
+    render json: @post.comments
   end
 
-  private 
+  private
 
   def set_post
     @post = Post.find(params[:id])

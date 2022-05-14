@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'users#index'
   namespace :api do
     namespace :v1 do
+      post '/auth/login', to: 'authentication#login'
       defaults format: :json do
         resources :users, only: [:show] do
           resources :posts, only: [:show] do
