@@ -4,7 +4,7 @@
       <%= link_to post.title, user_post_path(user_id: @user.id, id: post.id) %>
       <p><%= post.text %></p>
       <div>
-        <%= button_to "Delete", delete_post_path(user_id: @user.id, post_id: post.id), method: :delete if can? :delete , post %>
+        <%= button_to "Delete", user_post_path(user_id: @user.id, id: post.id), method: :delete if can? :delete , post %>
         <span>Comments: <%= post.commentsCounter || 0 %> likes: <%= post.likesCounter || 0 %></span>
       </div>
     </div>

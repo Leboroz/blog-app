@@ -5,13 +5,23 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root 'users#index'
-  post 'users/:user_id/posts', to: 'posts#create' # create
-  post 'users/:user_id/posts/:post_id', to: 'comments#create', as: 'new_comment' # comments create
-  post 'users/:user_id/posts/:post_id/like', to: 'likes#create', as: 'new_like' # likes create
-  delete 'users/:user_id/posts/:post_id', to: 'posts#delete', as: 'delete_post'
+  namespace :api do
+    namespace :v1 do
+      post '/auth/login', to: 'authentication#login'
+      defaults format: :json do
+        resources :users, only: [:show] do
+          resources :posts, only: [:show] do
+			      resources :comments, only: [:create]
+          end
+        end
+      end
+    end
+  end
+
   resources :users, only: [:index, :show] do
-    resources :posts, only: [:index, :show, :new] do
-			resources :comments, only: [:destroy]
+    resources :posts, only: [:index, :show, :new, :create, :destroy] do
+			resources :comments, only: [:destroy, :create]
+			resources :likes, only: [:create]
 		end
   end
 end
