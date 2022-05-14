@@ -17,6 +17,7 @@ gem 'puma', '~> 5.0'
 
 gem 'jwt', '~> 1.5', '>= 1.5.4'
 
+
 gem 'knock'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
@@ -79,4 +80,5 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'rswag-specs'
 end
