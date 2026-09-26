@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <% if flash.any? %>
+      <% flash.each do |type, msg| %>
+        <div>
+          <%= msg %>
+        </div>
+      <% end %>
+    <% end %>
+    <% if notice %><p class="notice"><%= notice %></p><% end %>
+    <% if alert %><p class="alert"><%= alert %></p><% end %>
+    <nav>
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+    ``<p><%= current_user.name%></p>
+		</nav>  <div class="container">
+      <div class="card flex">
+        <figure class="image-wrapper flex flex-center">
+          <img class="image" src="<%= @user.photo %>" alt="<%= @user.name %>">
+        </figure>
+
+        <div class="card-body flex flex-item-center">
+          <h2><%= @user.name %></h2>
+          <div>
+            <%= link_to 'new post', new_user_post_path(params[:id] || params[:user_id]) %>
+            <h4>Number of posts: <%= @user.post_counter || '0' %></h4>
+          </div>
+        </div>
+      </div>
+      <%= yield %>
+      <%= link_to @path, class: 'link' do %>
+        <button type="button"><%= @button_text %></button>
+      <% end %>
+    </div>
+  </body>
+</html>
+
+

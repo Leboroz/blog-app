@@ -1,0 +1,5 @@
+<%= form_with model: @Like, url: user_post_likes_url(user_id: current_user.id, post_id: params[:id]) do |form| %>
+  <button type="submit">
+    <i class="fa-solid fa-heart"></i>
+  </button>
+<% end %>
